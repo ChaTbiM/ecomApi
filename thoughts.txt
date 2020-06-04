@@ -1,0 +1,15 @@
+ ** Pages ----------
+ 
+ * visitor   
+ - home page 
+ - category page 
+ - subcategory
+ - product
+ 
+ * user ( loggedIn )
+ - shopping cart 
+ - checkout
+ - shipping addresses ( عناوين الشحن)
+ - preferred lists (القوائم المفضلة)
+ - recommended
+ - edit account/profile
