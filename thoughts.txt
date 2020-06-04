@@ -1,3 +1,7 @@
+ ** Users ----------
+    * super admin
+    * seller    
+    * visitor   
  ** Pages ----------
  
  * visitor   
