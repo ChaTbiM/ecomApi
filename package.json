@@ -1,0 +1,29 @@
+{
+  "name": "ecomapi",
+  "version": "1.0.0",
+  "description": "ecommerce platform api wi, nodejs with expressjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ChaTbiM/ecomApi.git"
+  },
+  "keywords": [
+    "ecommerce",
+    "api",
+    "javascript",
+    "nodejs",
+    "experssjs\u001b[D\u001b[D\u001b[D\u001b[D\u001b[D\u001bre\u001b[C\u001b[C\u001b[C\u001b[C"
+  ],
+  "author": "chatbi mustapha & tarek arar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ChaTbiM/ecomApi/issues"
+  },
+  "homepage": "https://github.com/ChaTbiM/ecomApi#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
