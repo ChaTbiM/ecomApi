@@ -7,4 +7,11 @@ const ProductDetailsSchema = new mongoose.Schema({
 
 const ProductDetails = mongoose.model("ProductDetails", ProductDetailsSchema);
 
-module.exports = { ProductDetails, ProductDetailsSchema };
+// create product DEtails
+const createProductDetails = function (name, description) {
+  const productDetails = new ProductDetails({ name, description });
+
+  return productDetails.save();
+};
+
+module.exports = { ProductDetails, ProductDetailsSchema, createProductDetails };

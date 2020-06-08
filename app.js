@@ -1,52 +1,27 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const app = express();
-const router = require("./routes/index");
 const port = 3000;
 
-const ProductDetails = require("./database/models/product_details")
-  .ProductDetails;
-const Product = require("./database/models/product");
-
-app.use("/", router);
+const anotherRoutes = require("./routes/index").anotherRoutes;
+const productRoutes = require("./routes/index").productRoutes;
 
 if (process.env.NODE_ENV !== "production") {
   require("dotenv").config();
 }
-
+// connect db
 const uri = process.env.DATABASE_URL;
+const databaseConnection = mongoose.connect(uri, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  serverSelectionTimeoutMS: 5000,
+});
+// .then((res) => console.log(res))
+// .catch((err) => console.log(err));
 
-mongoose
-  .connect(uri, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    serverSelectionTimeoutMS: 5000,
-  })
-  .then((res) => console.log(res))
-  .catch((err) => console.log(err));
-// Define DB queries
-const createProductDetails = function (name, description) {
-  const productDetails = new ProductDetails({ name, description });
-
-  return productDetails.save();
-};
-
-const createProduct = function (sku, title, productDetails) {
-  const product = new Product({ sku, title });
-  product.details = productDetails;
-  return product.save();
-};
-
-// execute DB queries
-
-createProductDetails("color", "black")
-  .then((productDetails) => {
-    console.log("created new PRoduct Details", productDetails);
-
-    return createProduct("IPOD2008PINK", "IPOD", productDetails);
-  })
-  .then((product) => console.log("product created", product))
-  .catch((err) => console.log("error =>>>", err));
+// routes
+app.use("/product", productRoutes);
+app.use("/world", anotherRoutes);
 
 // starting Server
-app.listen(port, () => console.log(`${process.env.DATABASE_URL}`));
+app.listen(port, () => console.log(`listening to http://localhost:${port}`));
