@@ -25,15 +25,15 @@ mongoose
   .then((res) => console.log(res))
   .catch((err) => console.log(err));
 // Define DB queries
-const createProductDetails = (name, description) => {
+const createProductDetails = function (name, description) {
   const productDetails = new ProductDetails({ name, description });
 
   return productDetails.save();
 };
 
-const createProduct = (sku, title, productDetails) => {
-  const product = new Product({ sku, title, productDetails });
-
+const createProduct = function (sku, title, productDetails) {
+  const product = new Product({ sku, title });
+  product.details = productDetails;
   return product.save();
 };
 
