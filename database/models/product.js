@@ -10,7 +10,7 @@ const ProductSchema = new mongoose.Schema({
   product_attributes: [productAttributesSchema],
   product_variants: [ProductVariantsSchema],
   images: [ImageSchema],
-  category: ProductSchema,
+  category: CategorySchema,
   created_at: { type: Date, default: Date.now },
   published_at: { type: Date, default: null },
   updated_at: { type: Date, default: null },
