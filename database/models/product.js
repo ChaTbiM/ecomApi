@@ -1,25 +1,33 @@
 const mongoose = require("mongoose");
+
 const ProductDetailsSchema = require("./product_details").ProductDetailsSchema;
+const productAttributesSchema = require("./product_attributes")
+  .ProductAttributesSchema;
 
 const ProductSchema = new mongoose.Schema({
   sku: String,
-  title: String,
   product_details: ProductDetailsSchema,
-  price: mongoose.Decimal128,
-  short_description: String,
-  created_at: Date,
-  published_at: Date,
-  updated_at: Date,
-  deleted_at: Date,
+  product_attributes: [productAttributesSchema],
+  product_variants: [ProductVariantsSchema],
+  images: [ImageSchema],
+  category: ProductSchema,
+  created_at: { type: Date, default: Date.now },
+  published_at: { type: Date, default: null },
+  updated_at: { type: Date, default: null },
+  deleted_at: { type: Date, default: null },
 });
 
 const Product = mongoose.model("Product", ProductSchema);
 
 // insert product
 
-const createProduct = function (sku, title, productDetails) {
-  const product = new Product({ sku, title });
-  product.product_details = productDetails;
+const createProduct = function (sku, title, productDetails, productAttributes) {
+  const product = new Product({
+    sku,
+    title,
+    product_details: productDetails,
+    product_attributes: productAttributes,
+  });
   return product.save();
 };
 
