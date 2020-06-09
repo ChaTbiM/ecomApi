@@ -6,9 +6,9 @@ const productAttributesSchema = require("./product_attributes")
 
 const ProductSchema = new mongoose.Schema({
   sku: String,
-  product_details: ProductDetailsSchema,
-  product_attributes: [productAttributesSchema],
-  product_variants: [ProductVariantsSchema],
+  details: ProductDetailsSchema,
+  attributes: [productAttributesSchema],
+  variants: [ProductVariantsSchema],
   images: [ImageSchema],
   category: CategorySchema,
   created_at: { type: Date, default: Date.now },
