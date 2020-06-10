@@ -1,5 +1,6 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const bodyParser = require("body-parser");
 const app = express();
 const port = 3000;
 
@@ -18,6 +19,9 @@ const databaseConnection = mongoose.connect(uri, {
 });
 // .then((res) => console.log(res))
 // .catch((err) => console.log(err));
+// middlewares
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // routes
 app.use("/product", productRoutes);
