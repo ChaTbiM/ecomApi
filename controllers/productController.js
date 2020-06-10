@@ -4,9 +4,8 @@ const postProductService = require("../services/productService")
 const postProduct = async (req, res, next) => {
   try {
     await postProductService();
-
     res.status(201).send("product success");
-    next();
+    console.log("what?");
   } catch (err) {
     res.status(201).send("product failure");
   }
