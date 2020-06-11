@@ -1,17 +1,34 @@
 const createProductDetails = require("../database/models/product_details")
   .createProductDetails;
 const createProduct = require("../database/models/product").createProduct;
-const createProductAttribute = require("../database/models/product_attribute")
-  .createProductAttribute;
+const createProductAttributes = require("../database/models/product_attributes")
+  .createProductAttributes;
 
 // interact with database or external services
 
 // postProductService Async/Await Version
-const postProductService = async () => {
-  const productAttribute = await createProductAttribute();
-  const productDetails = await createProductDetails("price", "111$");
+const postProductService = async ({ product, details, attributes }) => {
+  const { sku } = product;
+  const {
+    title,
+    description,
+    short_description,
+    in_stock,
+    stock_quantity,
+    price,
+  } = details;
 
-  return await createProduct("IPOD2008PINK", productDetails, productAttribute);
+  const productDetails = await createProductDetails(
+    title,
+    description,
+    short_description,
+    in_stock,
+    stock_quantity,
+    price
+  );
+  const productAttributes = await createProductAttributes(attributes);
+
+  return await createProduct(sku, productDetails, productAttributes);
 };
 
 module.exports = { postProductService };

@@ -1,11 +1,11 @@
-const postProductService = require("../services/productService")
+const postProductService = require("../services/productServices")
   .postProductService;
 
 const postProduct = async (req, res, next) => {
   try {
-    await postProductService();
-    res.status(201).send("product success");
-    console.log("what?");
+    const productInformation = req.body;
+    const product = await postProductService(productInformation);
+    res.status(201).send(product);
   } catch (err) {
     res.status(201).send("product failure");
   }
