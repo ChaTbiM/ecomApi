@@ -6,6 +6,7 @@ const port = 3000;
 
 const anotherRoutes = require("./routes/index").anotherRoutes;
 const productRoutes = require("./routes/index").productRoutes;
+const categoryRoutes = require("./routes/index").categoryRoutes;
 
 if (process.env.NODE_ENV !== "production") {
   require("dotenv").config();
@@ -25,6 +26,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // routes
 app.use("/product", productRoutes);
+app.use("/category", categoryRoutes);
 app.use("/world", anotherRoutes);
 
 // starting Server
